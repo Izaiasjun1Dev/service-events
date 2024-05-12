@@ -1,0 +1,102 @@
+[project]
+name = "judici"
+dynamic = ['version', 'description', 'authors', 'keywords', 'classifiers', 'dependencies']
+
+[keywords]
+dynamic = ["judici"]
+
+[classifiers]
+dynamic = ["Programming Language :: Python :: 3.8"]
+
+[dependencies]
+dynamic = [
+    "pydantic-settings",
+    "pydantic",
+    "pandas",
+    "chalice",
+    "python-dotenv",
+    "openai",
+    "boto3",
+    "pytest",
+    "langchain==0.1.14",
+    "langchain-community==0.0.31",
+    "langchain-core==0.1.40",
+    "langchain-openai==0.1.1",
+    "langchain-text-splitters==0.0.1",
+    "langsmith==0.1.40",
+]
+
+[project.scripts]
+judici = 'judici.cli:main'
+
+[build-system]
+requires = [
+    'setuptools',
+    "setuptools-scm>=8.0",
+    'wheel',
+]
+build-backend = 'setuptools.build_meta'
+
+[tool.setuptools]
+# use defaults
+
+
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311']
+
+[tool.isort]
+add_imports = [
+    'from __future__ import annotations',
+]
+atomic = true
+force_grid_wrap = 2
+force_sort_within_sections = true
+profile = 'black'
+skip_gitignore = true
+line_length = 88
+
+[tool.autoflake]
+in_place = true
+remove_all_unused_imports = true
+remove_unused_variables = true
+
+[tool.flake8]
+# configurado no `.pre-commit-config.yaml`
+# link: https://github.com/PyCQA/flake8/issues/234 (lamentavel)
+
+[tool.bandit]
+exclude_dirs = ['tests', 'src/judici/commands/cmd_*.py']
+
+[tool.autopep8]
+aggressive = 3
+in-place = true
+max_line_length = 100
+
+[tool.mypy]
+ignore_missing_imports = true
+incremental = true
+namespace_packages = true
+show_error_codes = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+
+[tool.pylint.messages-control]
+disable = [
+    'eval-used',  # deixa isso com o bandit
+    'logging-fstring-interpolation',
+    'missing-class-docstring',
+    'missing-function-docstring',
+    'missing-module-docstring',
+    'too-few-public-methods',
+    'too-many-arguments',
+]
+good-names = '"_,cb,con,df,ex,fn,i,it,j,k,np,ns,x"'
+max-line-length = 88
+reports = 'n'
+score = 'n'
+
+[tool.pytest.ini_options]
+addopts = '--doctest-modules --disable-pytest-warnings'

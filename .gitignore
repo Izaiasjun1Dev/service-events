@@ -1,0 +1,13 @@
+.chalice/deployments/
+.chalice/venv/
+__pycache__/
+*.pyc
+extracted_*
+*.docx
+*.pdf
+lab/
+*-info/
+.env
+volume/
+
+

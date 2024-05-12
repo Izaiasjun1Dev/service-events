@@ -1,0 +1,16 @@
+{
+  "version": "2.0",
+  "app_name": "serviceEvents",
+  "stages": {
+    "dev": {
+      "api_gateway_stage": "api",
+      "environment_variables": {
+        "ENVIRONMENT": "dev",
+        "AWS_REGION": "us-east-1",
+        "AWS_ACCESS_KEY_ID": "teste",
+        "AWS_SECRET_ACCESS_KEY": "teste",
+        "AWS_ENPOINT_URL": "http://localhost:4566"
+      }
+    }
+  }
+}
